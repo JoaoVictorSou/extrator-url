@@ -1,7 +1,13 @@
-#url query params
-#base ? parâmetros
-url = "http://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100".split('?')
-[url_base, url_parametros] = url
+# URL query params
+# Base ? parâmetros
+url = "http://bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100"
+
+# Sanitização da str e validação da URL
+if url.strip() == '':
+    raise ValueError("A url esta vazia")
+
+# Separando a base e os query parâmetros
+[url_base, url_parametros] = url.split('?')
 
 '''
 STRING FATIADA (slicing)
