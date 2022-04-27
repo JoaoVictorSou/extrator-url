@@ -10,5 +10,12 @@ OBS: str são sequências imutáveis
 url_base = url[:26]
 url_parametros = url[27:77]
 '''
-print(url_base)
-print(url_parametros)
+
+parametros = url_parametros.split('&')
+valor_parametros = []
+
+for parametro in parametros:
+    indice = parametro.find('=')
+    valor_parametros.append(parametro[indice+1:])
+
+print(valor_parametros)
