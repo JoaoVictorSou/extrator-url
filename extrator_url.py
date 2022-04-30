@@ -41,3 +41,8 @@ class ExtratorURL:
                 return url_parametros[index_valor:index_divisor]
             else:
                 return url_parametros[index_valor:]
+
+extrator = ExtratorURL('https://alura.com/cursos?id=1&nome=python&nivel=avancado')
+
+print(extrator.get_valor_parametro('nome'))
+
