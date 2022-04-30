@@ -54,11 +54,31 @@ class ExtratorURL:
             else:
                 return url_parametros[index_valor:]
 
+    # os dundle methods, ou magic methods, são chamados pelo python no interpretador. Fazem parte da estrutura da linguagem
+
     def __len__(self):
         return len(self.url)
 
-extrator = ExtratorURL('https://www.bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100')
+    # todo objeto do python implementa __str__ por padrão, retornando o tipo e o endereço da memória.
+    def __str__(self):
+        return self.url + "\n" + f"Base: {self.get_url_base()}" + "\n" + f"Parâmetros: {self.get_url_params()}"
 
-print(extrator.get_valor_parametro('quantidade'))
-print(len(extrator))
+    # em uma classe, de forma padrão, é implementado como a comparação dos endereços dos objetos na memória
+    def __eq__(self, other):
+        return self.url == other.url
+
+url = 'www.bytebank.com/cambio?moedaOrigem=real&moedaDestino=dolar&quantidade=100'
+extrator = ExtratorURL(url)
+
+print(f"Valor do parâmetro 'quantidade': {extrator.get_valor_parametro('quantidade')}")
+print(f"Tamanho da URL no extrator: {len(extrator)}")
+
+# o print chama str() para puder imprimir
+print(f"Conteúdo do extrator: {extrator}")
+
+# o == chama o método __eq__()
+print(f"São iguais? ", extrator == ExtratorURL(url))
+
+# is é uma palavra especial que compara os endereços na memória
+print(f"São os mesmos? ", extrator is ExtratorURL(url))
 
