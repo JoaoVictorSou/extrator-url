@@ -1,5 +1,6 @@
 import requests
 
+
 class ConversorMoeda:
     # atributo estático, moedas aceitas pelo conversor
     moedas = ['USD',
@@ -20,7 +21,7 @@ class ConversorMoeda:
         # retorno do valor da conversão da moeda, considerando o valor do cambio e a quantidade imposta
         return float(conversao[f'{self.__moeda_origem}{self.__moeda_destino}']['ask']) * self.__quantidade
 
-    # método que pode ser utilizado pela própria classe para ver se uma quantia informada por ser entendido como dinheiro
+    # método que pode ser utilizado pela própria classe para ver se um valor é dinheiro
     @staticmethod
     def valida_quantidade(quantidade):
         tipo_quantidade = type(quantidade)
